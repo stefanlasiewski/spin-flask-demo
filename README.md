@@ -1,7 +1,7 @@
 
 # Containers
 
-Set up like, for instance:
+On your laptop set up like, for instance:
 
     docker pull mongo:latest
     docker run --name db \
