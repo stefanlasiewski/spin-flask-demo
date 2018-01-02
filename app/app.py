@@ -92,8 +92,7 @@ def connect_db() :
 
 @app.route("/")
 def index():
-    pass
-#   return jsonify(fields=url_for("fields"))
+    return render_template("welcome.html", count=g.db.drosophila.count())
 
 
 @app.route("/fields/")
