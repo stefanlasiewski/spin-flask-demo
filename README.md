@@ -20,13 +20,12 @@ On your laptop set up like, for instance:
 
     cd ../web
     docker pull nginx:latest
-    docker build -t web:latest .
     docker run --name web \
         -v $(pwd)/images:/srv:ro \
         -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
         -p 80:80 \
         --link app:app \
-        -d web
+        -d nginx
 
 # Data
 
