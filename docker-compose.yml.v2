@@ -9,7 +9,9 @@ services:
     - 8080:8080
     cap_drop:
       - ALL
-    user: USERNAME:nginx
+    user: YOUR_UID:YOUR_GID
+    group_add:
+      - nginx
   app:
     image: registry.spin.nersc.gov/YOURUSERNAME/spin-flask-demo-app:v2
     environment:
