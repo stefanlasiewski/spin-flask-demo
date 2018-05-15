@@ -1,4 +1,8 @@
 version: '2'
+volumes:
+  db.stefanl-flask-demo:
+    external: true
+    driver: rancher-nfs
 services:
   web:
     image: registry.spin.nersc.gov/YOURUSERNAME/my-first-container-nginx:latest
@@ -13,7 +17,7 @@ services:
     group_add:
     - nginx
   app:
-    image: registry.spin.nersc.gov/YOURUSERNAME/spin-flask-demo-app:v1
+    image: registry.spin.nersc.gov/YOURUSERNAME/spin-flask-demo-app:v2
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo-initdb-password
@@ -30,6 +34,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo-initdb-password
+    volumes:
+    - db.stefanl-flask-demo:/data/db
     cap_drop:
     - ALL
     cap_add:

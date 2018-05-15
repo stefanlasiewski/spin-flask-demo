@@ -1,4 +1,8 @@
 version: '2'
+volumes:
+  db.YOURUSERNAME-flask-demo:
+    external: true
+    driver: rancher-nfs
 services:
   web:
     image: registry.spin.nersc.gov/YOURUSERNAME/my-first-container-nginx:latest
@@ -6,12 +10,12 @@ services:
     - /global/project/projectdirs/YOUR_PROJECT/YOUR_SPIN_WORKDIR/USERNAME-flask-demo/web/nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
     - /global/project/projectdirs/YOUR_PROJECT/YOUR_SPIN_WORKDIR/USERNAME-flask-demo/web/images:/srv:ro
     ports:
-    - 8080:8080
+    - 60000:8080
     cap_drop:
-      - ALL
+    - ALL
     user: YOUR_UID:YOUR_GID
     group_add:
-      - nginx
+    - nginx
   app:
     image: registry.spin.nersc.gov/YOURUSERNAME/spin-flask-demo-app:v2
     environment:
@@ -30,6 +34,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo-initdb-password
+    volumes:
+    - db.YOURUSERNAME-flask-demo:/data/db
     cap_drop:
     - ALL
     cap_add:
