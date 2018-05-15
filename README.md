@@ -1,32 +1,6 @@
 
 # Containers
 
-On your laptop set up like, for instance:
-
-    docker pull mongo:latest
-    docker run --name db \
-        -e MONGO_INITDB_ROOT_USERNAME=... \
-        -e MONGO_INITDB_ROOT_PASSWORD=... \
-        -d mongo
-
-    cd app
-    docker build -t app:latest .
-    docker run --name app \
-        -e MONGO_INITDB_ROOT_USERNAME=... \
-        -e MONGO_INITDB_ROOT_PASSWORD=... \
-        -p 8000:8000 \
-        --link db:db \
-        -d app
-
-    cd ../web
-    docker pull nginx:latest
-    docker run --name web \
-        -v $(pwd)/images:/srv:ro \
-        -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
-        -p 80:80 \
-        --link app:app \
-        -d nginx
-
 # Data
 
 Data set comes from the Broad Bioimage Benchmark Collection:
