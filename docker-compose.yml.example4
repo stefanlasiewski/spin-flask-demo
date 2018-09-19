@@ -42,6 +42,7 @@ services:
     - CHOWN
     - SETGID
     - SETUID
+    - DAC_OVERRIDE
     secrets:
     - mode: '0444'
       uid: '0'

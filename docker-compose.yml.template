@@ -30,3 +30,4 @@ services:
     - CHOWN
     - SETGID
     - SETUID
+    - DAC_OVERRIDE
