@@ -13,7 +13,7 @@ RUN \
         vim
 
 RUN \
-    curl -o /tmp/miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
+    curl -Lo /tmp/miniconda3.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
     /bin/bash /tmp/miniconda3.sh -b -p /opt/anaconda3   &&  \
     rm -rf /tmp/miniconda3
 
