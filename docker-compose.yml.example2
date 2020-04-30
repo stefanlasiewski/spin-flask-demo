@@ -17,6 +17,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo-initdb-password
+    retain_ip: true
     cap_drop:
     - ALL
     secrets:
